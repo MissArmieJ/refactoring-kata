@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{95385D5C-16A3-4903-8DC7-96701EDB4395}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RefactoringExamples</RootNamespace>
+    <AssemblyName>RefactoringExamples</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="NSubstitute, Version=1.10.0.0, Culture=neutral, PublicKeyToken=92dd2e9066daa5ca, processorArchitecture=MSIL">
+      <HintPath>..\packages\NSubstitute.1.10.0.0\lib\net45\NSubstitute.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ExtractClass\PersonShould.cs" />
+    <Compile Include="ExtractClass\Person.cs" />
+    <Compile Include="ExtractMethod\CustomerAccount.cs" />
+    <Compile Include="ExtractMethod\CustomerAccountShould.cs" />
+    <Compile Include="ExtractMethod\IOutput.cs" />
+    <Compile Include="ExtractMethod\Order.cs" />
+    <Compile Include="InlineMethod\Courier.cs" />
+    <Compile Include="InlineMethod\CourierShould.cs" />
+    <Compile Include="InlineTemp\BigOrderDetector.cs" />
+    <Compile Include="InlineTemp\BigOrderDetectorShould.cs" />
+    <Compile Include="InlineTemp\Order.cs" />
+    <Compile Include="IntroduceExplainingVariable\PriceCalculator.cs" />
+    <Compile Include="IntroduceExplainingVariable\PriceCalculatorShould.cs" />
+    <Compile Include="IntroduceExplainingVariable\UserInterface.cs" />
+    <Compile Include="IntroduceExplainingVariable\UserInterfaceShould.cs" />
+    <Compile Include="IntroduceParameterObject\Account.cs" />
+    <Compile Include="IntroduceParameterObject\Entry.cs" />
+    <Compile Include="IntroduceParameterObject\AccountShould.cs" />
+    <Compile Include="MoveField\Account.cs" />
+    <Compile Include="MoveField\AccountType.cs" />
+    <Compile Include="MoveField\MoveFieldTests.cs" />
+    <Compile Include="PreserveWholeObject\HeatingPlan.cs" />
+    <Compile Include="PreserveWholeObject\Room.cs" />
+    <Compile Include="PreserveWholeObject\RoomShould.cs" />
+    <Compile Include="PreserveWholeObject\TempRange.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RemoveAssignmentsToParameters\DiscountCalculator.cs" />
+    <Compile Include="RemoveAssignmentsToParameters\DiscountCalculatorShould.cs" />
+    <Compile Include="ReplaceMethodWithMethodObject\Account.cs" />
+    <Compile Include="ReplaceMethodWithMethodObject\AccountShould.cs" />
+    <Compile Include="ReplaceTempWithQuery\OrderLine.cs" />
+    <Compile Include="ReplaceTempWithQuery\OrderLineShould.cs" />
+    <Compile Include="ReplaceTypeCodeWithClass\Person.cs" />
+    <Compile Include="ReplaceTypeCodeWithClass\ReplaceTypeCodeWithClassTests.cs" />
+    <Compile Include="ReplaceConditionalWithPolymorphism\Employee.cs" />
+    <Compile Include="ReplaceConditionalWithPolymorphism\EmployeeInEngineerRoleShould.cs" />
+    <Compile Include="ReplaceConditionalWithPolymorphism\EmployeeInManagerRoleShould.cs" />
+    <Compile Include="ReplaceConditionalWithPolymorphism\EmployeeInSalespersonRoleShould.cs" />
+    <Compile Include="ReplaceConditionalWithPolymorphism\EmployeeType.cs" />
+    <Compile Include="ReplaceTypeCodeWithStateStrategy\Employee.cs" />
+    <Compile Include="ReplaceTypeCodeWithStateStrategy\EmployeeInManagerRoleShould.cs" />
+    <Compile Include="ReplaceTypeCodeWithStateStrategy\EmployeeInSalespersonRoleShould.cs" />
+    <Compile Include="ReplaceTypeCodeWithStateStrategy\EmployeeInEngineerRoleShould.cs" />
+    <Compile Include="SeparateQueryFromModifier\ISendAlerts.cs" />
+    <Compile Include="SeparateQueryFromModifier\SecurityChecker.cs" />
+    <Compile Include="SeparateQueryFromModifier\SeparateQueryFromModifierTests.cs" />
+    <Compile Include="SplitTemporaryVariable\Haggis.cs" />
+    <Compile Include="SplitTemporaryVariable\HaggisShould.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

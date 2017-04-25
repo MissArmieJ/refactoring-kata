@@ -19,17 +19,19 @@ namespace RefactoringExamples.SplitTemporaryVariable
 
         public double GetDistanceTravelled(int time)
         {
-            double result;
-            var acc = _primaryForce/_mass;
+            var primaryAcceleration = _primaryForce / _mass;
             var primaryTime = Math.Min(time, _delay);
-            result = 0.5*acc*primaryTime*primaryTime;
+
+            var result = 0.5 * primaryAcceleration * primaryTime * primaryTime;
             var secondaryTime = time - _delay;
-            if (secondaryTime > 0)
-            {
-                var primaryVel = acc*_delay;
-                acc = (_primaryForce + _secondaryForce)/_mass;
-                result += primaryVel*secondaryTime + 0.5*acc*secondaryTime*secondaryTime;
-            }
+
+            if (secondaryTime <= 0) return result;
+
+            var primaryVelocity = primaryAcceleration * _delay;
+            var secondaryAcceleration = (_primaryForce + _secondaryForce) / _mass;
+
+            result += primaryVelocity * secondaryTime + 0.5 * secondaryAcceleration * secondaryTime * secondaryTime;
+
             return result;
         }
     }

@@ -2,18 +2,27 @@
 {
     public class Account
     {
-        private AccountType _type;
-        private readonly double _interestRate;
+        private readonly AccountType _type;
 
         public Account(AccountType type, double interestRate)
         {
             _type = type;
-            _interestRate = interestRate;
+            SetInterestRate(interestRate);
+        }
+
+        private void SetInterestRate(double interestRate)
+        {
+            _type.SetInterestRate(interestRate);
         }
 
         public double InterestForAmount_Days(double amount, int days)
         {
-            return _interestRate*amount*days/365;
-        } 
+            return GetInterestRate() * amount * days / 365;
+        }
+
+        private double GetInterestRate()
+        {
+            return _type.GetInterestRate();
+        }
     }
 }

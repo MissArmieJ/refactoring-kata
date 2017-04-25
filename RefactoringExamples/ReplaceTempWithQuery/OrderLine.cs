@@ -1,4 +1,6 @@
-﻿namespace RefactoringExamples.ReplaceTempWithQuery
+﻿using System.CodeDom;
+
+namespace RefactoringExamples.ReplaceTempWithQuery
 {
     public class OrderLine
     {
@@ -13,13 +15,17 @@
 
         public double GetPrice()
         {
-            var basePrice = _quantity*_itemPrice;
-            double discountFactor;
-            if (basePrice > 1000)
-                discountFactor = 0.95;
-            else
-                discountFactor = 0.98;
-            return basePrice*discountFactor;
+            return BasePrice() * DiscountFactor();
+        }
+
+        private double DiscountFactor()
+        {
+            return BasePrice() > 1000 ? 0.95 : 0.98;
+        }
+
+        private int BasePrice()
+        {
+            return _quantity*_itemPrice;
         }
     }
 }

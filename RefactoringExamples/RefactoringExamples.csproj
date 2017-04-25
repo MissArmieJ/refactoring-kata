@@ -79,6 +79,7 @@
     <Compile Include="RemoveAssignmentsToParameters\DiscountCalculatorShould.cs" />
     <Compile Include="ReplaceMethodWithMethodObject\Account.cs" />
     <Compile Include="ReplaceMethodWithMethodObject\AccountShould.cs" />
+    <Compile Include="ReplaceMethodWithMethodObject\Gamma.cs" />
     <Compile Include="ReplaceTempWithQuery\OrderLine.cs" />
     <Compile Include="ReplaceTempWithQuery\OrderLineShould.cs" />
     <Compile Include="ReplaceTypeCodeWithClass\Person.cs" />

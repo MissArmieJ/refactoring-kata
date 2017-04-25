@@ -17,22 +17,34 @@ namespace RefactoringExamples.ExtractMethod
 
         public void PrintOwing()
         {
+            PrintBanner();
+
+            var outstanding = CalculateOutstanding();
+
+            PrintDetails(outstanding);
+        }
+
+        private double CalculateOutstanding()
+        {
             var outstanding = 0.0;
-
-            // print banner
-            _output.WriteLine("*************************");
-            _output.WriteLine("***** Customer Owes *****");
-            _output.WriteLine("*************************");
-
-            // calculate outstanding
             foreach (var order in _orders)
             {
                 outstanding += order.Amount;
             }
+            return outstanding;
+        }
 
-            // print details
-            _output.WriteLine("name:"  + _name);
+        private void PrintDetails(double outstanding)
+        {
+            _output.WriteLine("name:" + _name);
             _output.WriteLine("amount:" + outstanding);
+        }
+
+        private void PrintBanner()
+        {
+            _output.WriteLine("*************************");
+            _output.WriteLine("***** Customer Owes *****");
+            _output.WriteLine("*************************");
         }
     }
 }

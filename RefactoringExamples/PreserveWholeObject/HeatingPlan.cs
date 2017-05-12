@@ -9,9 +9,10 @@ namespace RefactoringExamples.PreserveWholeObject
             _range = range;
         }
 
-        public bool WithinRange(int low, int high)
+        public bool WithinRange(TempRange roomRange)
         {
-            return low >= _range.Low && high <= _range.High;
+            return roomRange.GetLow() >= _range.GetLow() 
+                && roomRange.GetHigh() <= _range.GetHigh();
         }
     }
 }

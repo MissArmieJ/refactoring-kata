@@ -11,9 +11,7 @@
 
         public bool WithinPlan(HeatingPlan heatingPlan)
         {
-            var low = _daysTempRange.Low;
-            var high = _daysTempRange.High;
-            return heatingPlan.WithinRange(low, high);
+            return heatingPlan.WithinRange(_daysTempRange);
         }
     }
 }

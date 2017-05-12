@@ -1,23 +1,29 @@
+using System.Collections.Generic;
+
 namespace RefactoringExamples.ReplaceTypeCodeWithClass
 {
     public class Person
     {
-        public const int O = 0;
-        public const int A = 1;
-        public const int B = 2;
-        public const int AB = 3;
+        private BloodGroup _bloodGroup;
 
-        private int _bloodGroup;
-
-        public Person(int bloodGroup)
+        public Person(BloodGroup bloodGroup)
         {
             _bloodGroup = bloodGroup;
         }
 
-        public int BloodGroup
+        public void SetBloodGroup(BloodGroup bloodGroup)
         {
-            get { return _bloodGroup; }
-            set { _bloodGroup = value; }
+            _bloodGroup = bloodGroup;   
+        }
+
+        public BloodGroup GetBloodGroup()
+        {
+            return _bloodGroup;
+        }
+
+        public int GetBloodGroupCode()
+        {
+            return _bloodGroup.GetCode();
         }
     }
 }

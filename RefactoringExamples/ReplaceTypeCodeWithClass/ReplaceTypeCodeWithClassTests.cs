@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using NUnit.Framework;
 
 namespace RefactoringExamples.ReplaceTypeCodeWithClass
@@ -7,31 +6,39 @@ namespace RefactoringExamples.ReplaceTypeCodeWithClass
     [TestFixture]
     public class ReplaceTypeCodeWithClassTests
     {
-        private readonly IEnumerable<int> _testCases = new List<int>
+        private readonly IEnumerable<BloodGroup> _testCases = new List<BloodGroup>
         {
-            Person.O,
-            Person.A,
-            Person.B,
-            Person.AB
+            BloodGroup.O,
+            BloodGroup.A,
+            BloodGroup.B,
+            BloodGroup.AB
         };
 
-        [TestCaseSource("_testCases")]
-        public void A_person_has_a_blood_group(int bloodGroup)
+        [TestCaseSource(nameof(_testCases))]
+        public void A_person_has_a_blood_group(BloodGroup bloodGroup)
         {
             var person = new Person(bloodGroup);
 
-            Assert.That(person.BloodGroup, Is.EqualTo(bloodGroup));
+            Assert.That(person.GetBloodGroup(), Is.EqualTo(bloodGroup));
         }
 
-        [TestCaseSource("_testCases")]
-        public void A_persons_blood_group_can_be_amended(int bloodGroup)
+        [TestCaseSource(nameof(_testCases))]
+        public void A_persons_blood_group_can_be_amended(BloodGroup bloodGroup)
         {
-            var person = new Person(Person.O);
-            Assert.That(person.BloodGroup, Is.EqualTo(Person.O));
+            var person = new Person(BloodGroup.O);
+            Assert.That(person.GetBloodGroup(), Is.EqualTo(BloodGroup.O));
 
-            person.BloodGroup = bloodGroup;
+            person.SetBloodGroup(bloodGroup);
 
-            Assert.That(person.BloodGroup, Is.EqualTo(bloodGroup));
+            Assert.That(person.GetBloodGroup(), Is.EqualTo(bloodGroup));
+        }
+
+        [TestCaseSource(nameof(_testCases))]
+        public void A_persons_blood_groups_code_can_be_obtained(BloodGroup bloodGroup)
+        {
+            var person = new Person(bloodGroup);
+            
+            Assert.That(person.GetBloodGroupCode(), Is.EqualTo(bloodGroup.GetCode()));
         }
     }
 }

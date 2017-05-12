@@ -83,6 +83,7 @@
     <Compile Include="ReplaceMethodWithMethodObject\Gamma.cs" />
     <Compile Include="ReplaceTempWithQuery\OrderLine.cs" />
     <Compile Include="ReplaceTempWithQuery\OrderLineShould.cs" />
+    <Compile Include="ReplaceTypeCodeWithClass\BloodGroup.cs" />
     <Compile Include="ReplaceTypeCodeWithClass\Person.cs" />
     <Compile Include="ReplaceTypeCodeWithClass\ReplaceTypeCodeWithClassTests.cs" />
     <Compile Include="ReplaceConditionalWithPolymorphism\Employee.cs" />

@@ -11,31 +11,40 @@ namespace RefactoringExamples.ReplaceConditionalWithPolymorphism
 
         public Employee(int type)
         {
-            Type = type;
+            _employeeType = EmployeeType.TypeFrom(type);
             _monthlySalary = 100;
             _commission = 10;
             _bonus = 20;
         }
 
-        public int Type
+        public int GetTypeCode()
         {
-            get { return _employeeType.Code; }
-            set { _employeeType = EmployeeType.TypeFrom(value); }
+            return _employeeType.Code;
+        }
+
+        public void SetType(int code)
+        {
+            _employeeType = EmployeeType.TypeFrom(code);
+        }
+
+        public int GetMonthlySalary()
+        {
+            return _monthlySalary;
+        }
+
+        public int GetCommission()
+        {
+            return _commission;
+        }
+
+        public int GetBonus()
+        {
+            return _bonus;
         }
 
         public int PayAmount()
         {
-            switch (Type)
-            {
-                case EmployeeType.Engineer:
-                    return _monthlySalary;
-                case EmployeeType.Salesperson:
-                    return _monthlySalary + _commission;
-                case EmployeeType.Manager:
-                    return _monthlySalary + _bonus;
-                default:
-                    throw new Exception("Incorrect Employee");
-            }
+            return _employeeType.PayAmount(this);
         }
     }
 }

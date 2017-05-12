@@ -26,7 +26,7 @@ namespace RefactoringExamples.ReplaceConditionalWithPolymorphism
         [TestCase(EmployeeType.Salesperson, BasicSalary + Commission)]
         public void Get_a_pay_cut_on_demotion(int employeeType, int expectedSalary)
         {
-            _manager.Type = employeeType;
+            _manager.SetType(employeeType);
 
             Assert.That(_manager.PayAmount(), Is.EqualTo(expectedSalary));
         }

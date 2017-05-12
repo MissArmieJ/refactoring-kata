@@ -26,7 +26,7 @@ namespace RefactoringExamples.ReplaceConditionalWithPolymorphism
         [TestCase(EmployeeType.Salesperson, BasicSalary + Commission)]
         public void Get_a_pay_rise_on_promotion(int employeeType, int expectedSalary)
         {
-            _engineer.Type = employeeType;
+            _engineer.SetType(employeeType);
 
             Assert.That(_engineer.PayAmount(), Is.EqualTo(expectedSalary));
         }

@@ -25,7 +25,7 @@ namespace RefactoringExamples.ReplaceConditionalWithPolymorphism
         [Test]
         public void Get_a_pay_rise_on_promotion()
         {
-            _salesperson.Type = EmployeeType.Manager;
+            _salesperson.SetType(EmployeeType.Manager);
 
             Assert.That(_salesperson.PayAmount(), Is.EqualTo(BasicSalary + Bonus));
         }
@@ -33,7 +33,7 @@ namespace RefactoringExamples.ReplaceConditionalWithPolymorphism
         [Test]
         public void Get_a_pay_cut_on_demotion()
         {
-            _salesperson.Type = EmployeeType.Engineer;
+            _salesperson.SetType(EmployeeType.Engineer);
 
             Assert.That(_salesperson.PayAmount(), Is.EqualTo(BasicSalary));
         }

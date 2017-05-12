@@ -5,6 +5,7 @@ namespace RefactoringExamples.ReplaceConditionalWithPolymorphism
     public abstract class EmployeeType
     {
         public abstract int Code { get; }
+        public abstract int PayAmount(Employee employee);
 
         public static EmployeeType TypeFrom(int value)
         {
@@ -26,18 +27,30 @@ namespace RefactoringExamples.ReplaceConditionalWithPolymorphism
         public const int Manager = 2;
     }
 
-    class Engineer : EmployeeType
+    internal class Engineer : EmployeeType
     {
         public override int Code => Engineer;
+        public override int PayAmount(Employee employee)
+        {
+            return employee.GetMonthlySalary();
+        }
     }
 
-    class Salesperson : EmployeeType
+    internal class Salesperson : EmployeeType
     {
         public override int Code => Salesperson;
+        public override int PayAmount(Employee employee)
+        {
+            return employee.GetMonthlySalary() + employee.GetCommission();
+        }
     }
 
-    class Manager : EmployeeType
+    internal class Manager : EmployeeType
     {
         public override int Code => Manager;
+        public override int PayAmount(Employee employee)
+        {
+            return employee.GetMonthlySalary() + employee.GetBonus();
+        }
     }
 }

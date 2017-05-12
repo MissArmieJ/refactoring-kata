@@ -1,39 +1,43 @@
 using System;
+using NSubstitute.Exceptions;
 
 namespace RefactoringExamples.ReplaceTypeCodeWithStateStrategy
 {
     public class Employee
     {
-        private int _type;
+        private EmployeeType _employeeType;
+
         private readonly int _monthlySalary;
         private readonly int _commission;
         private readonly int _bonus;
-        public const int Engineer = 0;
-        public const int Salesperson = 1;
-        public const int Manager = 2;
 
-        public Employee(int type)
+        public Employee(EmployeeType employeeType)
         {
-            _type = type;
+            _employeeType = employeeType;
             _monthlySalary = 100;
             _commission = 10;
             _bonus = 20;
         }
 
-        public int Type
+        public int GetTypeCode()
         {
-            set { _type = value; }
+            return _employeeType.GetTypeCode();
         }
 
-        public int PayAmount()
+        public void SetTypeBy(int code)
         {
-            switch (_type)
+            _employeeType = EmployeeType.GetTypeBy(code);
+        }
+
+       public int PayAmount()
+        {
+            switch (GetTypeCode())
             {
-                case Engineer:
+                case EmployeeType.Engineer:
                     return _monthlySalary;
-                case Salesperson:
+                case EmployeeType.Salesperson:
                     return _monthlySalary + _commission;
-                case Manager:
+                case EmployeeType.Manager:
                     return _monthlySalary + _bonus;
                 default:
                     throw new Exception("Incorrect Employee");

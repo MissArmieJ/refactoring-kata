@@ -13,7 +13,7 @@ namespace RefactoringExamples.ReplaceTypeCodeWithStateStrategy
         [SetUp]
         public void SetUp()
         {
-            _manager = new Employee(Employee.Manager);
+            _manager = new Employee(new Manager());
         }
 
         [Test]
@@ -22,11 +22,11 @@ namespace RefactoringExamples.ReplaceTypeCodeWithStateStrategy
             Assert.That(_manager.PayAmount(), Is.EqualTo(BasicSalary + Bonus));
         }
 
-        [TestCase(Employee.Engineer, BasicSalary)]
-        [TestCase(Employee.Salesperson, BasicSalary + Commission)]
+        [TestCase(EmployeeType.Engineer, BasicSalary)]
+        [TestCase(EmployeeType.Salesperson, BasicSalary + Commission)]
         public void Get_a_pay_cut_on_demotion(int employeeType, int expectedSalary)
         {
-            _manager.Type = employeeType;
+            _manager.SetTypeBy(employeeType);
 
             Assert.That(_manager.PayAmount(), Is.EqualTo(expectedSalary));
         }
